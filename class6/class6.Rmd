@@ -1,0 +1,32 @@
+---
+title: "Class6"
+author: "Amber Fossier"
+date: "1/30/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+#Function reads in a protein and searches it in the PDB to analyze the drug interactions, and plots the output for the protein
+proteinfunction <- function(protein){
+  library(bio3d)
+  #Reads the inputted protein in the PDB
+  s <- read.pdb(protein)
+  #trims the PDB results
+  s.chainA <-trim.pdb(s, chain="A", elety="CA")  
+  #selects specific columns of the data
+  s.b <- s.chainA$atom$b
+  #data is plotted
+  plotb3(s.b, sse=s.chainA, typ="l", ylab="Bfactor")
+}
+```
+
+```{r}
+#calling the function
+proteinfunction("1AKE")
+```
+
+
