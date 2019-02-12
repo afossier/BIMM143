@@ -1,3 +1,10 @@
+#' ---
+#' title: "Class 5 Introduction to R graphics"
+#' author: "Amber Fossier"
+#' date: " Jan 22, 2019"
+#' output: github_document
+#' ---
+#' 
 #Class 05 R graphics intro
 
 #My first boxplot
