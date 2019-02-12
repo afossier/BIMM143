@@ -1,15 +1,9 @@
----
-title: "Class6"
-author: "Amber Fossier"
-date: "1/30/2019"
-output: github_document
----
+Class6
+================
+Amber Fossier
+1/30/2019
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
-```{r}
+``` r
 #Function reads in a protein and searches it in the PDB to analyze the drug interactions, and plots the output for the protein
 proteinfunction <- function(protein){
   library(bio3d)
@@ -24,9 +18,12 @@ proteinfunction <- function(protein){
 }
 ```
 
-```{r}
+``` r
 #calling the function
 proteinfunction("1AKE")
 ```
 
+    ##   Note: Accessing on-line PDB file
+    ##    PDB has ALT records, taking A only, rm.alt=TRUE
 
+![](class6_files/figure-markdown_github/unnamed-chunk-2-1.png)
