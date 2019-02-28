@@ -1,0 +1,132 @@
+---
+title: "Class 15: Transcriptomics and the analysis of RNA-Seq data"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+source("http://bioconductor.org/biocLite.R")
+biocLite()
+
+# For this class, you'll also need DESeq2:
+biocLite("DESeq2")
+```
+
+```{r}
+counts <- read.csv("data/airway_scaledcounts.csv", stringsAsFactors = FALSE)
+metadata <-  read.csv("data/airway_metadata.csv", stringsAsFactors = FALSE)
+```
+
+Take a look at the data
+```{r}
+head(counts)
+head(metadata)
+```
+
+```{r}
+View(metadata)
+```
+
+```{r}
+control <- metadata[metadata[,"dex"]=="control",]
+control.mean <- rowSums( counts[ ,control$id] )/4 
+names(control.mean) <- counts$ensgene
+```
+
+```{r}
+treated <- metadata[metadata[,"dex"]=="treated",]
+treated.mean <- rowSums( counts[ ,treated$id] )/4 
+names(treated.mean) <- counts$ensgene
+```
+
+```{r}
+meancounts <- data.frame(control.mean, treated.mean)
+
+```
+
+```{r}
+meancounts$log2fc <- log2(meancounts[,"treated.mean"]/meancounts[,"control.mean"])
+head(meancounts)
+```
+```{r}
+zero.vals <- which(meancounts[,1:2]==0, arr.ind=TRUE)
+
+to.rm <- unique(zero.vals[,1])
+mycounts <- meancounts[-to.rm,]
+head(mycounts)
+```
+```{r}
+up.ind <- mycounts$log2fc > 2
+down.ind <- mycounts$log2fc < (-2)
+```
+
+```{r}
+anno <- read.csv("data/annotables_grch38.csv")
+head(anno)
+```
+```{r}
+library("AnnotationDbi")
+library("org.Hs.eg.db")
+columns(org.Hs.eg.db)
+```
+```{r}
+mycounts$symbol <- mapIds(org.Hs.eg.db,
+                     keys=row.names(mycounts),
+                     column="SYMBOL",
+                     keytype="ENSEMBL",
+                     multiVals="first")
+
+```
+```{r}
+head(mycounts[up.ind,])
+```
+```{r}
+library(DESeq2)
+citation("DESeq2")
+```
+
+```{r}
+dds <- DESeqDataSetFromMatrix(countData=counts, 
+                              colData=metadata, 
+                              design=~dex, 
+                              tidy=TRUE)
+dds
+```
+```{r}
+sizeFactors(dds)
+dispersions(dds)
+dds <- DESeq(dds)
+```
+```{r}
+res <- results(dds)
+res
+```
+```{r}
+summary(res)
+```
+```{r}
+resOrdered <- res[order(res$pvalue),]
+```
+```{r}
+res05 <- results(dds, alpha=0.05)
+summary(res05)
+```
+```{r}
+resSig05 <- subset(as.data.frame(res), padj < 0.05)
+nrow(resSig05)
+```
+
+#arrange and view results by adjusted p-value
+```{r}
+ord <- order( resSig05$padj )
+View(res05[ord,])
+head(resSig05[ord,])
+```
+```{r}
+write.csv(resSig05[ord,], "signif01_results.csv")
+```
+
+
