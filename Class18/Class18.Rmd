@@ -1,0 +1,69 @@
+---
+title: "Class 18: Cancer Genomics"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(GenomicDataCommons)
+library(TCGAbiolinks)
+library(maftools)
+```
+
+```{r}
+GenomicDataCommons::status()
+```
+```{r}
+cases_by_project <- cases() %>%
+  facet("project.project_id") %>%
+  aggregations()
+head(cases_by_project)
+```
+```{r}
+x <- cases_by_project$project.project_id
+head(x)
+
+# Make a custom color vector for our plot
+colvec <- rep("lightblue", nrow(x))
+#colvec[___] <- "red"
+
+# Plot with 'log' for y axis and rotate labels with 'las'
+#par(___)  
+barplot(x$doc_count, names.arg=x$key, log="y", col=colvec, las=2)
+```
+```{r}
+query <- GDCquery(project="TCGA-PAAD",
+                  data.category="Transcriptome Profiling",
+                  data.type="Gene Expression Quantification")
+
+ans <- getResults(query)
+```
+
+```{r}
+View(ans)
+nrow(ans)
+```
+
+```{r}
+maf.file <- GDCquery_Maf(tumor="PAAD", pipelines = "mutect")
+head(maf.file)
+```
+```{r}
+vars = read.maf(maf = maf.file, verbose = FALSE)
+plotmafSummary(vars)
+```
+
+
+##Oncostrip
+```{r}
+oncostrip(maf=vars, genes=c("KRAS", "TP53"))
+```
+
+##Lollipop
+```{r}
+lollipopPlot(vars, gene='TP53')
+```
+
