@@ -2,14 +2,14 @@
 title: "Class 7"
 author: "Amber Fossier"
 date: "1/29/19"
-output: html_document
+output: github_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-##Functions revist
+##Functions revist again
 ```{r}
 source("http://tinyurl.com/rescale-R")
 ```
@@ -21,9 +21,7 @@ rescale(c(1,5,10))
 ```
 
 Lets try **rescale2()** with the **stop()** function catch for non-numeric input 
-```{r}
-rescale2(c(1:5,"string"))
-```
+
 ```{r}
 x <-c(1,2,NA,3,NA)
 y<-c(NA, 3, NA, 3, 4)
@@ -67,9 +65,6 @@ both_na(x,y3)
 ```
 
 
-```{r}
-both_na3(x, y)
-```
 
 
 

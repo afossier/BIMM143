@@ -3,8 +3,8 @@ Class 7
 Amber Fossier
 1/29/19
 
-Functions revist
-----------------
+Functions revist again
+----------------------
 
 ``` r
 source("http://tinyurl.com/rescale-R")
