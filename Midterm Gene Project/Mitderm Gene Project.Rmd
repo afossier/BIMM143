@@ -1,0 +1,33 @@
+---
+title: "Midterm Project: Find a Gene"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+##Generate a heatmap plot and add to your report.
+```{r}
+library(bio3d)
+align<-read.fasta("alignment.fst")
+head(align)
+```
+
+```{r}
+ids<-seqidentity(align)
+data=as.matrix(ids)
+```
+
+```{r}
+pdf("~/Desktop/heatmap.pdf")
+heatmap(data, margins = c(8,8), cexRow = 0.75, cexCol = 0.75)
+```
+
+```{r}
+consens<-consensus(align)
+head(consens)
+```
+
+
+
