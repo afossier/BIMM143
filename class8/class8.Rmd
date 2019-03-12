@@ -1,8 +1,8 @@
 ---
-title: "Class8"
+title: "Class8: Introduction to Machine Learning for Bioinformatics"
 author: "Amber Fossier"
 date: "2/5/2019"
-output: html_document
+output: github_document
 ---
 
 ```{r setup, include=FALSE}
