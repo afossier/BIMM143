@@ -3,8 +3,8 @@
 This is a store of my class-work for [BIMM143 Winter 2019](https://bioboot.github.io/bimm143_W19/) at UCSD.
 
 ##Contents
-- Class04 [Introduction to R]()
-- Class05 [R Graphics](https://github.com/afossier/BIMM143/blob/master/class05/class05.md)
+- Class4 [Introduction to R]()
+- Class5 [R Graphics](https://github.com/afossier/BIMM143/blob/master/class05/class05.md)
 - Class6 [R Functions](https://github.com/afossier/BIMM143/blob/master/class6/class6.md)
 - Class7 [Fucntions and Packages](https://github.com/afossier/BIMM143/blob/master/class7/class7.md)
 - Class8 [Introduction to Machine Learning for Bioinformatics](https://github.com/afossier/BIMM143/blob/master/class8/class8.md)
