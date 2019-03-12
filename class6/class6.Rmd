@@ -1,5 +1,5 @@
 ---
-title: "Class6"
+title: "Class6: R Functions"
 author: "Amber Fossier"
 date: "1/30/2019"
 output: github_document

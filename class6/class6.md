@@ -1,4 +1,4 @@
-Class6
+Class6: R Functions
 ================
 Amber Fossier
 1/30/2019
