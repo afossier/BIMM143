@@ -6,7 +6,7 @@ This is a store of my class-work for [BIMM143 Winter 2019](https://bioboot.githu
 - Class4 [Introduction to R]()
 - Class5 [R Graphics](https://github.com/afossier/BIMM143/blob/master/class05/class05.md)
 - Class6 [R Functions](https://github.com/afossier/BIMM143/blob/master/class6/class6.md)
-- Class7 [Fucntions and Packages](https://github.com/afossier/BIMM143/blob/master/class7/class7.md)
+- Class7 [Functions and Packages](https://github.com/afossier/BIMM143/blob/master/class7/class7.md)
 - Class8 [Introduction to Machine Learning for Bioinformatics](https://github.com/afossier/BIMM143/blob/master/class8/class8.md)
 - Class9 [Analysis of Human Breast Cancer Cells](https://github.com/afossier/BIMM143/blob/master/Class9/Class9.md)
 - Class11 [Structural Bioinformatics](https://github.com/afossier/BIMM143/blob/master/class11/class11.md)
