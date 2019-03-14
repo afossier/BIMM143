@@ -2,7 +2,7 @@
 
 This is a store of my class-work for [BIMM143 Winter 2019](https://bioboot.github.io/bimm143_W19/) at UCSD.
 
-#Contents
+## Contents
 - Class4 [Introduction to R]()
 - Class5 [R Graphics](https://github.com/afossier/BIMM143/blob/master/class05/class05.md)
 - Class6 [R Functions](https://github.com/afossier/BIMM143/blob/master/class6/class6.md)
